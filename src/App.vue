@@ -1,32 +1,29 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view />
-  </div>
+	<div id="app">
+		<HelloWorld />
+		<PracticeConvert :age="12" />
+		<UserStatus :user="myUser" />
+	</div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script lang="ts">
+import HelloWorld from "./components/HelloWorld.vue";
+import PracticeConvert from "./components/PracticeConvert.vue";
+import UserStatus from "./components/UserStatus.vue";
+import { Vue, Component } from "vue-property-decorator";
+
+@Component({
+	components: {
+		HelloWorld,
+		PracticeConvert,
+		UserStatus,
+	},
+})
+export default class App extends Vue {
+	myUser = {
+		firstName: "Liina",
+		lastName: "Bakhoff",
+		isOnline: false,
+	};
 }
-
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>
+</script>
